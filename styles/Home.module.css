@@ -1,13 +1,17 @@
 .main {
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 .container {
+  display: flex;
+  flex-direction: row;
 }
-.sideBar {
+.sidebar {
+  min-width: 15rem;
   background-color: #202020;
-  overflow: auto;
+  height: calc(100vh - 5rem);
+  border-right: 1px solid slategray;
 }
 .nfContainer {
   overflow: auto

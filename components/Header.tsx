@@ -34,6 +34,7 @@ export const Header = () => {
                 MenuListProps={{'aria-labelledby': 'menu-button'}}
                 PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
                 transformOrigin={{ vertical: 'top', horizontal: 'right'}}
+                anchorOrigin={{vertical: 40, horizontal: 30}}
             >
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><AddIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>

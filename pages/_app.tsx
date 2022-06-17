@@ -8,6 +8,7 @@ function app({ Component, pageProps }: AppProps) {
             <Head>
                 <title>NationalFocus Viewer</title>
                 <meta name="description" content="support your modding."/>
+                <link rel={'icon'} href={'/icon.png'}/>
             </Head>
             <Component {...pageProps} />
         </>
