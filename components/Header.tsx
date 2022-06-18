@@ -1,6 +1,6 @@
 import styles from '../styles/Header.module.css'
 import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from '@mui/material';
-import { Add as AddIcon, Download as DownloadIcon, Menu as MenuIcon, Upload as UploadIcon } from '@mui/icons-material';
+import { Add as AddIcon, Download as DownloadIcon, Menu as MenuIcon, Upload as UploadIcon, Settings as SettingsIcon } from '@mui/icons-material';
 import React from 'react';
 
 export const Header = () => {
@@ -40,7 +40,7 @@ export const Header = () => {
                     <ListItemIcon><AddIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
                     <ListItemText>Add New NFTree</ListItemText>
                 </MenuItem>
-                <Divider sx={{bgcolor: 'slategray'}}/>
+                <Divider sx={{bgcolor: 'slategray', margin: '0 0.7rem'}}/>
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><UploadIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
                     <ListItemText>Import NFTree</ListItemText>
@@ -48,6 +48,11 @@ export const Header = () => {
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><DownloadIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
                     <ListItemText>Export NFTree</ListItemText>
+                </MenuItem>
+                <Divider sx={{bgcolor: 'slategray', margin: '0 0.7rem'}}/>
+                <MenuItem onClick={handleClose}>
+                    <ListItemIcon><SettingsIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
+                    <ListItemText>Settings</ListItemText>
                 </MenuItem>
             </Menu>
         </div>

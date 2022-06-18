@@ -6,6 +6,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  max-height: 100%;
 }
 .sidebar {
   min-width: 15rem;
@@ -13,6 +14,25 @@
   height: calc(100vh - 5rem);
   border-right: 1px solid slategray;
 }
-.nfContainer {
-  overflow: auto
+.sidebartitle {
+  color: white;
+  text-align: center;
+  margin: 1rem 0;
+  font-family: "Ubuntu", serif;
+}
+.sidebarbutton {
+  font-family: "Ubuntu", serif;
+  width: 100%;
+  height: 36px;
+  padding: 4px 16px;
+  color: white;
+}
+.sidebarbuttontest {
+  margin: 0;
+  height: 16px;
+  padding: 4px 2px;
+  display: none;
+}
+.sidebarbuttontest:active {
+  color: red;
 }
