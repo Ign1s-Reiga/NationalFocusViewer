@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import { Divider, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Stack, Typography } from '@mui/material';
 import { Header } from '../components/Header';
 import NFContainer from '../components/NFContainer';
+import Head from 'next/head';
 
 const files = [
     'ENG_Focus1',
@@ -16,6 +17,11 @@ const files = [
 const App: NextPage = () => {
     return (
         <div className={styles.main}>
+            <Head>
+                <title>NationalFocus Viewer</title>
+                <meta name="description" content="support your modding."/>
+                <link rel={'icon'} href={'/icon.png'}/>
+            </Head>
             <Header/>
             <div className={styles.container}>
                 <Stack className={styles.sidebar}>
