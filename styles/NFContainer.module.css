@@ -1,0 +1,5 @@
+.nfContainer {
+    position: relative;
+    width: calc(100% - 15rem);
+    min-height: 100%;
+}
