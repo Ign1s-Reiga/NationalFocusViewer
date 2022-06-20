@@ -30,9 +30,6 @@ const App: NextPage = () => {
                     </List>
                     <input type={'radio'} className={styles.sidebarbuttontest}/>
                 </Stack>
-                <div>
-
-                </div>
                 <NFContainer selectedItem={'unko'}/>
             </div>
         </div>

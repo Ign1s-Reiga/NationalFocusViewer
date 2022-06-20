@@ -1,5 +1,19 @@
 .nfContainer {
+    height: calc(100vh - 5rem);
+    width: 100%;
     position: relative;
-    width: calc(100% - 15rem);
-    min-height: 100%;
+}
+.nfContainerBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 2;
+}
+.nfContainerFocusBg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 4;
 }
