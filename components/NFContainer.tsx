@@ -4,8 +4,8 @@ import styles from '../styles/NFContainer.module.css'
 const NFContainer = (props: {selectedItem: string}) => {
     return (
         <div className={styles.nfContainer}>
-            <Image src={'/tiled_bg.png'} alt={''} layout={'fill'}/>
-            <Image src={'/tiled_focus_bg.png'} alt={''} layout={'fill'}/>
+            <img src={'/tiled_bg.png'} alt={''} className={styles.nfContainerBg}/>
+            <img src={'/tiled_focus_bg.png'} alt={''} className={styles.nfContainerFocusBg}/>
         </div>
     )
 }
