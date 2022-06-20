@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import styles from '../styles/NFContainer.module.css'
 
 const NFContainer = (props: {selectedItem: string}) => {

@@ -1,8 +1,7 @@
 import type { NextPage } from 'next'
-import { Menu as MenuIcon, Add as AddIcon, Download as DownloadIcon, Upload as UploadIcon } from '@mui/icons-material';
 import React from 'react'
 import styles from '../styles/Home.module.css'
-import { Divider, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Menu, MenuItem, Stack, Typography } from '@mui/material';
+import { Divider, List, ListItemButton, Stack, Typography } from '@mui/material';
 import { Header } from '../components/Header';
 import NFContainer from '../components/NFContainer';
 import Head from 'next/head';
@@ -17,11 +16,6 @@ const files = [
 const App: NextPage = () => {
     return (
         <div className={styles.main}>
-            <Head>
-                <title>NationalFocus Viewer</title>
-                <meta name="description" content="support your modding."/>
-                <link rel={'icon'} href={'/icon.png'}/>
-            </Head>
             <Header/>
             <div className={styles.container}>
                 <Stack className={styles.sidebar}>
