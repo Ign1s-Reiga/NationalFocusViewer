@@ -4,6 +4,16 @@ import React from 'react';
 import { Typography } from '@mui/material';
 
 const NationalFocus = (props: {nfData: INationalFocus}) => {
+    const convertXCoordinate = (xCoords: number): number => {
+        if (process.browser) {
+            const elem = document.getElementById('nfContainer');
+            if (elem === null)
+                return xCoords;
+            return (elem.offsetWidth / 2) + xCoords * 10;
+        }
+        return 0;
+    }
+
     return (
         <div className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}}>
             <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
@@ -11,13 +21,6 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
             <Typography className={styles.nationalFocusName}>{props.nfData.id}</Typography>
         </div>
     )
-}
-
-const convertXCoordinate = (xCoords: number): number => {
-    const elem = document.getElementById('nfContainer');
-    if (elem === null)
-        return xCoords;
-    return (elem.offsetWidth / 2) + xCoords * 10;
 }
 
 export default NationalFocus
