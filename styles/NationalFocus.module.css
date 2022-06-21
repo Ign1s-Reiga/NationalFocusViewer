@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap');
+.nationalFocus {
+    max-width: 96px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+.nationalFocusName {
+    color: white;
+    z-index: 7;
+    text-align: center;
+    font-family: 'M PLUS 1 Code', sans-serif;
+    font-size: 0.8rem;
+    text-overflow: ellipsis;
+    padding: 0 1.1rem;
+    margin-top: -1.4rem;
+}

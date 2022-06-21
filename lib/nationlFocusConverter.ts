@@ -4,14 +4,14 @@ export interface INationalFocusTree {
 }
 export interface INationalFocus {
     id: string
-    icon: string
+    icon: string | null
     cost: number
     x: number
     y: number
     relativePositionId: INationalFocus | null
     prerequisite: INationalFocus[] | null
     mutuallyExclusive: INationalFocus[] | null
-    searchFilters: ''
+    searchFilters: string[]
     aiWillDo: {factor: number, modifier: {}}
     completeReward: string
     completeTooltip: string
