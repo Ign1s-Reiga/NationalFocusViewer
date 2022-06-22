@@ -37,6 +37,7 @@ const nfs: INationalFocus[] = [
 
 const NFContainer = (props: {selectedItem: string}) => {
     const [contextMenu, setContextMenu] = React.useState<{
+        id: string
         mouseX: number;
         mouseY: number;
     } | null>(null);
@@ -46,6 +47,7 @@ const NFContainer = (props: {selectedItem: string}) => {
         setContextMenu(
             contextMenu === null
                 ? {
+                    id: event.currentTarget.id,
                     mouseX: event.clientX + 2,
                     mouseY: event.clientY - 6,
                 } : null,
@@ -68,7 +70,7 @@ const NFContainer = (props: {selectedItem: string}) => {
             <img src={'/tiled_focus_bg.png'} alt={''} className={styles.nfContainerFocusBg}/>
             {nfs.map(v => <NationalFocus nfData={v} key={v.id}/>)}
             <Menu
-                open={contextMenu !== null}
+                open={(contextMenu !== null && contextMenu.id === 'nfContainer')}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
                 anchorPosition={
@@ -78,8 +80,23 @@ const NFContainer = (props: {selectedItem: string}) => {
                 }
                 PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
             >
-                <MenuItem onClick={handleClose}>コピー</MenuItem>
                 <MenuItem onClick={handleClose}>ペースト</MenuItem>
+                <MenuItem onClick={handleClose}>NFを追加</MenuItem>
+            </Menu>
+            <Menu
+                open={(contextMenu !== null && contextMenu.id === 'nationalFocus')}
+                onClose={handleClose}
+                anchorReference="anchorPosition"
+                anchorPosition={
+                    contextMenu !== null
+                        ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
+                        : undefined
+                }
+                PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
+            >
+                <MenuItem onClick={handleClose}>開く</MenuItem>
+                <MenuItem onClick={handleClose}>コピー</MenuItem>
+                <MenuItem onClick={handleClose}>削除</MenuItem>
             </Menu>
         </div>
     )

@@ -15,7 +15,7 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
     }
 
     return (
-        <div className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}}>
+        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}}>
             <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
             <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
             <Typography className={styles.nationalFocusName}>{props.nfData.id}</Typography>
