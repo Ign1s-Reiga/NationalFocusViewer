@@ -5,6 +5,7 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": "latest",
+    "loggerFn": false,
     "ecmaFeatures": {
       "jsx": true
     },
