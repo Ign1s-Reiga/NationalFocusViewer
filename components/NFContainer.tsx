@@ -83,21 +83,6 @@ const NFContainer = (props: {selectedItem: string}) => {
                 <MenuItem onClick={handleClose}>ペースト</MenuItem>
                 <MenuItem onClick={handleClose}>NFを追加</MenuItem>
             </Menu>
-            <Menu
-                open={(contextMenu !== null && contextMenu.id === 'nationalFocus')}
-                onClose={handleClose}
-                anchorReference="anchorPosition"
-                anchorPosition={
-                    contextMenu !== null
-                        ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
-                        : undefined
-                }
-                PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
-            >
-                <MenuItem onClick={handleClose}>開く</MenuItem>
-                <MenuItem onClick={handleClose}>コピー</MenuItem>
-                <MenuItem onClick={handleClose}>削除</MenuItem>
-            </Menu>
         </div>
     )
 }
