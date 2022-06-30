@@ -1,7 +1,7 @@
 import styles from '../styles/NFContainer.module.css'
 import { INationalFocus } from '../lib/nationlFocusConverter';
 import React from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { Button, Divider, Menu, MenuItem, Typography } from '@mui/material';
 import NationalFocus from './NationalFocus';
 
 const nfs: INationalFocus[] = [
@@ -47,6 +47,7 @@ const NFContainer = (props: {selectedItem: string}) => {
         mouseX: number;
         mouseY: number;
     } | null>(null);
+    const [showAddMenu, setShowAddMenu] = React.useState(false);
 
     const handleContextMenu = (event: React.MouseEvent) => {
         event.preventDefault();
@@ -70,7 +71,7 @@ const NFContainer = (props: {selectedItem: string}) => {
         setContextMenu(null);
     };
 
-    const handleAddNF = () => {};
+    const handleAddNF = () => { setShowAddMenu(true) };
 
     return (
         <div id={'nfContainer'} className={styles.nfContainer} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
@@ -78,7 +79,7 @@ const NFContainer = (props: {selectedItem: string}) => {
             <img src={'/tiled_focus_bg.png'} alt={''} className={styles.nfContainerFocusBg}/>
             {nfs.map(v => <NationalFocus nfData={v} key={v.id}/>)}
             <Menu
-                open={(contextMenu !== null && contextMenu.id === 'nfContainer')}
+                open={(contextMenu !== null && !showAddMenu)}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
                 anchorPosition={
@@ -89,8 +90,17 @@ const NFContainer = (props: {selectedItem: string}) => {
                 PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
             >
                 <MenuItem onClick={handleClose}>ペースト</MenuItem>
-                <MenuItem onClick={handleClose}>NFを追加</MenuItem>
+                <MenuItem onClick={handleAddNF}>NFを追加</MenuItem>
             </Menu>
+            {showAddMenu ?
+                <div className={styles.nfContainerAddMenuBg}>
+                    <div className={styles.nfContainerAddMenu}>
+                        <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
+                        <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
+                        <Button onClick={() => setShowAddMenu(false)}>Close</Button>
+                    </div>
+                </div> : ''
+            }
         </div>
     )
 }
