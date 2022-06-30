@@ -47,7 +47,7 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
         <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}}>
             <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
             <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
-            <Typography className={styles.nationalFocusName}>{props.nfData.id}</Typography>
+            <Typography className={styles.nationalFocusName}>{props.nfData.title.value}</Typography>
             <Menu
                 open={(contextMenu !== null && contextMenu.id === 'nationalFocus')}
                 onClose={handleClose}

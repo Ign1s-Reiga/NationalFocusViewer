@@ -6,11 +6,14 @@ import NationalFocus from './NationalFocus';
 
 const nfs: INationalFocus[] = [
     {
-        id: 'てすと1',
+        id: 'test1',
         icon: null,
         cost: 7,
         x: 5,
         y: 2,
+        title: {key: 'TITLE', value: 'てすと1'},
+        desc: {key: 'DESC', value: '説明'},
+        memo: 'NONE',
         relativePositionId: null,
         prerequisite: null,
         mutuallyExclusive: null,
@@ -20,11 +23,14 @@ const nfs: INationalFocus[] = [
         completeTooltip: '',
     },
     {
-        id: 'てすと2',
+        id: 'test2',
         icon: null,
         cost: 7,
         x: -5,
         y: 2,
+        title: {key: 'TITLE', value: 'てすと2'},
+        desc: {key: 'DESC', value: '説明'},
+        memo: 'NONE',
         relativePositionId: null,
         prerequisite: null,
         mutuallyExclusive: null,
@@ -63,6 +69,8 @@ const NFContainer = (props: {selectedItem: string}) => {
     const handleClose = () => {
         setContextMenu(null);
     };
+
+    const handleAddNF = () => {};
 
     return (
         <div id={'nfContainer'} className={styles.nfContainer} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
