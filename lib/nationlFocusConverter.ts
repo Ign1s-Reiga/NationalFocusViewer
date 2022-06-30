@@ -6,6 +6,9 @@ export interface INationalFocusTree {
 }
 export interface INationalFocus {
     id: string
+    title: translatePare
+    desc: translatePare
+    memo: string
     icon: string | null
     cost: number
     x: number
@@ -17,6 +20,10 @@ export interface INationalFocus {
     aiWillDo: {factor: number, modifier: {}}
     completeReward: string
     completeTooltip: string
+}
+type translatePare = {
+    key: string,
+    value: string
 }
 export const searchFilters = {
     POLITICAL: 'FOCUS_FILTER_POLITICAL',
