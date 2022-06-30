@@ -1,9 +1,14 @@
+import { Db, MongoClient } from 'mongodb';
+
 export interface INationalFocusTree {
     id: string
     focuses: INationalFocus[]
 }
 export interface INationalFocus {
     id: string
+    title: translatePare
+    desc: translatePare
+    memo: string
     icon: string | null
     cost: number
     x: number
@@ -15,6 +20,10 @@ export interface INationalFocus {
     aiWillDo: {factor: number, modifier: {}}
     completeReward: string
     completeTooltip: string
+}
+type translatePare = {
+    key: string,
+    value: string
 }
 export const searchFilters = {
     POLITICAL: 'FOCUS_FILTER_POLITICAL',
@@ -33,5 +42,19 @@ export const searchFilters = {
     AIR_XP: 'FOCUS_FILTER_AIR_XP'
 }
 export class NFConverter {
+    client: MongoClient
+    db: Db
 
+    constructor() {
+        assertIsString(process.env.MONGODB_URL)
+        this.client = new MongoClient(process.env.MONGODB_URL)
+        this.db = this.client.db('nfv')
+    }
+    convert() {
+
+    }
+}
+function assertIsString(a: any): asserts a is string {
+    if (typeof a !== 'string')
+        throw new Error('Not a String')
 }

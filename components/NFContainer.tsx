@@ -1,16 +1,19 @@
 import styles from '../styles/NFContainer.module.css'
 import { INationalFocus } from '../lib/nationlFocusConverter';
 import React from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { Button, Divider, Menu, MenuItem, Typography } from '@mui/material';
 import NationalFocus from './NationalFocus';
 
 const nfs: INationalFocus[] = [
     {
-        id: 'てすと1',
+        id: 'test1',
         icon: null,
         cost: 7,
         x: 5,
         y: 2,
+        title: {key: 'TITLE', value: 'てすと1'},
+        desc: {key: 'DESC', value: '説明'},
+        memo: 'NONE',
         relativePositionId: null,
         prerequisite: null,
         mutuallyExclusive: null,
@@ -20,11 +23,14 @@ const nfs: INationalFocus[] = [
         completeTooltip: '',
     },
     {
-        id: 'てすと2',
+        id: 'test2',
         icon: null,
         cost: 7,
         x: -5,
         y: 2,
+        title: {key: 'TITLE', value: 'てすと2'},
+        desc: {key: 'DESC', value: '説明'},
+        memo: 'NONE',
         relativePositionId: null,
         prerequisite: null,
         mutuallyExclusive: null,
@@ -40,6 +46,7 @@ const NFContainer = (props: {selectedItem: string}) => {
         mouseX: number;
         mouseY: number;
     } | null>(null);
+    const [showAddMenu, setShowAddMenu] = React.useState(false);
 
     const handleContextMenu = (event: React.MouseEvent) => {
         event.preventDefault();
@@ -62,13 +69,15 @@ const NFContainer = (props: {selectedItem: string}) => {
         setContextMenu(null);
     };
 
+    const handleAddNF = () => { setShowAddMenu(true) };
+
     return (
         <div id={'nfContainer'} className={styles.nfContainer} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
             <img src={'/tiled_bg.png'} alt={''} className={styles.nfContainerBg}/>
             <img src={'/tiled_focus_bg.png'} alt={''} className={styles.nfContainerFocusBg}/>
             {nfs.map(v => <NationalFocus nfData={v} key={v.id}/>)}
             <Menu
-                open={contextMenu !== null}
+                open={(contextMenu !== null && !showAddMenu)}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
                 anchorPosition={
@@ -78,9 +87,18 @@ const NFContainer = (props: {selectedItem: string}) => {
                 }
                 PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
             >
-                <MenuItem onClick={handleClose}>コピー</MenuItem>
                 <MenuItem onClick={handleClose}>ペースト</MenuItem>
+                <MenuItem onClick={handleAddNF}>NFを追加</MenuItem>
             </Menu>
+            {showAddMenu ?
+                <div className={styles.nfContainerAddMenuBg}>
+                    <div className={styles.nfContainerAddMenu}>
+                        <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
+                        <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
+                        <Button onClick={() => setShowAddMenu(false)}>Close</Button>
+                    </div>
+                </div> : ''
+            }
         </div>
     )
 }
