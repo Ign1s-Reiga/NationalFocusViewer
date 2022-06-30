@@ -43,7 +43,6 @@ const nfs: INationalFocus[] = [
 
 const NFContainer = (props: {selectedItem: string}) => {
     const [contextMenu, setContextMenu] = React.useState<{
-        id: string
         mouseX: number;
         mouseY: number;
     } | null>(null);
@@ -54,7 +53,6 @@ const NFContainer = (props: {selectedItem: string}) => {
         setContextMenu(
             contextMenu === null
                 ? {
-                    id: event.currentTarget.id,
                     mouseX: event.clientX + 2,
                     mouseY: event.clientY - 6,
                 } : null,

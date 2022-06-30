@@ -5,7 +5,6 @@ import { Menu, MenuItem, Typography } from '@mui/material';
 
 const NationalFocus = (props: {nfData: INationalFocus}) => {
     const [contextMenu, setContextMenu] = React.useState<{
-        id: string
         mouseX: number;
         mouseY: number;
     } | null>(null);
@@ -15,7 +14,6 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
         setContextMenu(
             contextMenu === null
                 ? {
-                    id: event.currentTarget.id,
                     mouseX: event.clientX + 2,
                     mouseY: event.clientY - 6,
                 } : null,
@@ -27,6 +25,7 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
         event.preventDefault();
         if ('Escape' === event.key)
             handleClose();
+        event.stopPropagation();
     };
 
     const handleClose = () => {
@@ -44,12 +43,12 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
     }
 
     return (
-        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}}>
+        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
             <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
             <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
             <Typography className={styles.nationalFocusName}>{props.nfData.title.value}</Typography>
             <Menu
-                open={(contextMenu !== null && contextMenu.id === 'nationalFocus')}
+                open={contextMenu !== null}
                 onClose={handleClose}
                 anchorReference="anchorPosition"
                 anchorPosition={
