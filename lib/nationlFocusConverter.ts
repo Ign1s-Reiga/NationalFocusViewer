@@ -2,6 +2,8 @@ import { Db, MongoClient } from 'mongodb';
 
 export interface INationalFocusTree {
     id: string
+    default: string
+    continuousFocusPosition: {x: number, y: number}
     focuses: INationalFocus[]
 }
 export interface INationalFocus {
@@ -65,7 +67,24 @@ export class NFConverter {
     convert() {
 
     }
-    export() {}
+    export(data: INationalFocusTree) {
+        let focusFile: string
+        let localizationFile: string
+
+        focusFile = `focus_tree = {\n
+            \tid = ${data.id}\n
+            \tcountry = {}\n
+            \tdefault = ${data.default}\n
+            \tcontinuous_focus_position = { x = ${data.continuousFocusPosition.x} y = ${data.continuousFocusPosition.y} }\n
+        }`
+        data.focuses.map(v => {
+            focusFile += `
+                \tfocus = {
+                    id = ${v.id}
+                }\n
+            `
+        })
+    }
 }
 function assertIsString(a: any): asserts a is string {
     if (typeof a !== 'string')
