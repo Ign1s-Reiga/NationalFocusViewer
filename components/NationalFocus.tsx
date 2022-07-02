@@ -31,47 +31,40 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
     };
 
     const handleClose = () => {
-        handleClose();
         setContextMenu(null);
     };
 
     const handleOpenEditMenu = () => {
+        handleClose();
         setShowEditMenu(true)
     };
 
     return (
-        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: `calc(50% + (${props.nfData.x}px * 10))`}} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
-            <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
-            <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
-            <Typography className={styles.nationalFocusName}>{props.nfData.title.value}</Typography>
-            <Menu
-                open={contextMenu !== null}
-                onClose={handleClose}
-                anchorReference="anchorPosition"
-                anchorPosition={
-                    contextMenu !== null
-                        ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
-                        : undefined
-                }
-                PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
-            >
-                <MenuItem onClick={handleClose}>開く</MenuItem>
-                <MenuItem onClick={handleClose}>コピー</MenuItem>
-                <MenuItem onClick={handleClose}>削除</MenuItem>
-            </Menu>
-            {showEditMenu ?
-                <div className={styles.nfContainerAddMenuBg}>
-                    <div className={styles.nfContainerAddMenu}>
-                        <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
-                        <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
-                        <div className={styles.nfContainerAddMenuInput}>
-                            <TextField key={'タイトル'} value={''}/>
-                        </div>
-                        <Button onClick={() => setShowEditMenu(false)}>Close</Button>
-                    </div>
-                </div> : ''
-            }
-        </div>
+        <>
+            <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: `calc(50% + (${props.nfData.x}px * 10))`}} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
+                <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
+                <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
+                <Typography className={styles.nationalFocusName}>{props.nfData.title.value}</Typography>
+                <Menu
+                    open={contextMenu !== null}
+                    onClose={handleClose}
+                    anchorReference="anchorPosition"
+                    anchorPosition={
+                        contextMenu !== null
+                            ? { top: contextMenu.mouseY, left: contextMenu.mouseX }
+                            : undefined
+                    }
+                    PaperProps={{sx: {bgcolor: '#202020', color: 'white'}}}
+                >
+                    <MenuItem onClick={handleOpenEditMenu}>開く</MenuItem>
+                    <MenuItem onClick={handleClose}>コピー</MenuItem>
+                    <MenuItem onClick={handleClose}>削除</MenuItem>
+                </Menu>
+            </div>
+            <div className={styles.nationalFocusEditMenu} style={showEditMenu ? {left: `calc(100% - 400px)`, transition: 'left 0.2s ease-out'} : {left: '100%', transition: 'left 0.2s ease-out'}}>
+                <Button onClick={() => setShowEditMenu(false)}>閉じる</Button>
+            </div>
+        </>
     )
 }
 

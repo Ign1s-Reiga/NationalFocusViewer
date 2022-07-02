@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
-import React from 'react'
 import styles from '../styles/Home.module.css'
 import { Divider, List, ListItemButton, Stack, Typography } from '@mui/material';
 import { Header } from '../components/Header';
 import NFContainer from '../components/NFContainer';
-import Head from 'next/head';
+import React from 'react';
 
 const files = [
     'ENG_Focus1',
@@ -13,7 +12,7 @@ const files = [
     '...'
 ]
 
-const App: NextPage = () => {
+const Index: NextPage = () => {
     return (
         <div className={styles.main}>
             <Header/>
@@ -36,4 +35,4 @@ const App: NextPage = () => {
     )
 }
 
-export default App
+export default Index

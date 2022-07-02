@@ -4,27 +4,39 @@ import Head from 'next/head';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import createEmotionCache from '../lib/createEmotionCache';
 import { CssBaseline } from '@mui/material';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const clientSideEmotionCache = createEmotionCache();
 interface AppProps extends NextAppProps {
     emotionCache?: EmotionCache;
 }
 
-function app(props: AppProps) {
+function App(props: AppProps) {
     const { Component, emotionCache = clientSideEmotionCache, pageProps } = props
+    const [showScreen, setShowScreen] = React.useState(false);
+
+    useEffect(() => {
+        setShowScreen(true);
+    }, []);
+
     return (
-        <CacheProvider value={emotionCache}>
-            <Head>
-                <title>NationalFocus Viewer</title>
-                <meta name="description" content="support your modding."/>
-                <link rel={'icon'} href={'/icon.png'}/>
-            </Head>
-            <CssBaseline />
-            <Component {...pageProps} />
-        </CacheProvider>
+        <>
+            {
+                showScreen ?
+                    <CacheProvider value={emotionCache}>
+                        <Head>
+                            <title>NationalFocus Viewer</title>
+                            <meta name="description" content="support your modding."/>
+                            <link rel={'icon'} href={'/icon.png'}/>
+                        </Head>
+                        <CssBaseline />
+                        <Component {...pageProps} />
+                    </CacheProvider>
+                    : ''
+            }
+        </>
     )
 
 }
 
-export default app
+export default App

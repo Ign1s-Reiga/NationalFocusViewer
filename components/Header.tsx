@@ -43,21 +43,21 @@ export const Header = () => {
             >
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><AddIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
-                    <ListItemText>Add New NFTree</ListItemText>
+                    <ListItemText>新しいNFTreeを追加する</ListItemText>
                 </MenuItem>
                 <Divider sx={{bgcolor: 'slategray', margin: '0 0.7rem'}}/>
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><UploadIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
-                    <ListItemText>Import NFTree</ListItemText>
+                    <ListItemText>NFTreeをインポートする</ListItemText>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon><DownloadIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
-                    <ListItemText>Export NFTree</ListItemText>
+                    <ListItemText>NFTreeをエクスポートする</ListItemText>
                 </MenuItem>
                 <Divider sx={{bgcolor: 'slategray', margin: '0 0.7rem'}}/>
                 <MenuItem onClick={handleOpenSetting}>
                     <ListItemIcon><SettingsIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
-                    <ListItemText>Settings</ListItemText>
+                    <ListItemText>設定</ListItemText>
                 </MenuItem>
             </Menu>
             {menu === 'setting' ?
