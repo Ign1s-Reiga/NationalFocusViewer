@@ -15,3 +15,13 @@
     padding: 0 1.1rem;
     margin-top: -1.4rem;
 }
+.nationalFocusEditMenu {
+    position: absolute;
+    display: flex;
+    top: 0;
+    
+    width: 30%;
+    height: 100%;
+    max-width: 460px;
+    z-index: 20;
+}

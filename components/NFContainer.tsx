@@ -1,7 +1,7 @@
 import styles from '../styles/NFContainer.module.css'
 import { INationalFocus } from '../lib/nationlFocusConverter';
 import React from 'react';
-import { Button, Divider, Menu, MenuItem, Typography } from '@mui/material';
+import { Button, Divider, Input, Menu, MenuItem, Typography } from '@mui/material';
 import NationalFocus from './NationalFocus';
 
 const nfs: INationalFocus[] = [
@@ -69,7 +69,10 @@ const NFContainer = (props: {selectedItem: string}) => {
         setContextMenu(null);
     };
 
-    const handleAddNF = () => { setShowAddMenu(true) };
+    const handleAddNF = () => {
+        handleClose();
+        setShowAddMenu(true);
+    };
 
     return (
         <div id={'nfContainer'} className={styles.nfContainer} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
@@ -95,12 +98,23 @@ const NFContainer = (props: {selectedItem: string}) => {
                     <div className={styles.nfContainerAddMenu}>
                         <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
                         <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
+                        <div className={styles.nfContainerAddMenuInput}>
+                            <TextField key={'タイトル'} value={''}/>
+                        </div>
                         <Button onClick={() => setShowAddMenu(false)}>Close</Button>
                     </div>
                 </div> : ''
             }
         </div>
     )
-}
+};
+export const TextField = (props: {key: string, value: string}) => {
+    return (
+        <div className={styles.nfContainerAddMenuTextField}>
+            <Typography variant={'body1'} style={{ color: 'white' }}>{props.key}</Typography>
+            <Input style={{ borderBottomColor: 'rgba(255,255,255,0.42)' }}></Input>
+        </div>
+    );
+};
 
 export default NFContainer

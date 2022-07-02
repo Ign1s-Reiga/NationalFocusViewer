@@ -1,10 +1,11 @@
 import styles from '../styles/Header.module.css'
-import { Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem } from '@mui/material';
-import { Add as AddIcon, Download as DownloadIcon, Menu as MenuIcon, Upload as UploadIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { Button, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Stack } from '@mui/material';
+import { Add as AddIcon, Download as DownloadIcon, Menu as MenuIcon, Upload as UploadIcon, Settings as SettingsIcon, Close as CloseIcon, Check as CheckIcon } from '@mui/icons-material';
 import React from 'react';
 
 export const Header = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const [menu, setMenu] = React.useState<string | null>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -12,6 +13,10 @@ export const Header = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    const handleOpenSetting = () => {
+        handleClose();
+        setMenu('setting')
+    }
 
     return (
         <div className={styles.header}>
@@ -50,11 +55,20 @@ export const Header = () => {
                     <ListItemText>Export NFTree</ListItemText>
                 </MenuItem>
                 <Divider sx={{bgcolor: 'slategray', margin: '0 0.7rem'}}/>
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleOpenSetting}>
                     <ListItemIcon><SettingsIcon fontSize={'small'} sx={{color: 'white'}}/></ListItemIcon>
                     <ListItemText>Settings</ListItemText>
                 </MenuItem>
             </Menu>
+            {menu === 'setting' ?
+                <div className={styles.setting}>
+                    <Stack direction={'row'} spacing={2}>
+                        <Button id={'closeSetting'} onClick={() => setMenu(null)} startIcon={<CloseIcon/>}>Close</Button>
+                        <Button id={'acceptSetting'} onClick={() => setMenu(null)} startIcon={<CheckIcon/>}>Apply</Button>
+                    </Stack>
+                </div>
+                : ''
+            }
         </div>
     )
 }

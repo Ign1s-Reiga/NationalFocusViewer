@@ -1,13 +1,15 @@
 import { INationalFocus } from '../lib/nationlFocusConverter';
 import styles from '../styles/NationalFocus.module.css';
 import React from 'react';
-import { Menu, MenuItem, Typography } from '@mui/material';
+import { Button, Divider, Menu, MenuItem, Typography } from '@mui/material';
+import { TextField } from './NFContainer';
 
 const NationalFocus = (props: {nfData: INationalFocus}) => {
     const [contextMenu, setContextMenu] = React.useState<{
         mouseX: number;
         mouseY: number;
     } | null>(null);
+    const [showEditMenu, setShowEditMenu] = React.useState(false)
 
     const handleContextMenu = (event: React.MouseEvent) => {
         event.preventDefault();
@@ -29,21 +31,16 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
     };
 
     const handleClose = () => {
+        handleClose();
         setContextMenu(null);
     };
 
-    const convertXCoordinate = (xCoords: number): number => {
-        if (process.browser) {
-            const elem = document.getElementById('nfContainer');
-            if (elem === null)
-                return xCoords;
-            return (elem.offsetWidth / 2) + xCoords * 10;
-        }
-        return 0;
-    }
+    const handleOpenEditMenu = () => {
+        setShowEditMenu(true)
+    };
 
     return (
-        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: convertXCoordinate(props.nfData.x)}} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
+        <div id={'nationalFocus'} className={styles.nationalFocus} style={{top: props.nfData.y * 5, left: `calc(50% + (${props.nfData.x}px * 10))`}} onContextMenu={handleContextMenu} onKeyUp={handleKeyUp}>
             <img src={props.nfData.icon === null ? '/icon.png' : props.nfData.icon} alt={''} style={{zIndex: 5}}/>
             <img src={'/focus_can_start_bg.png'} alt={''} style={{zIndex: 7, width: '96px', marginTop: '-1rem'}}/>
             <Typography className={styles.nationalFocusName}>{props.nfData.title.value}</Typography>
@@ -62,6 +59,18 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
                 <MenuItem onClick={handleClose}>コピー</MenuItem>
                 <MenuItem onClick={handleClose}>削除</MenuItem>
             </Menu>
+            {showEditMenu ?
+                <div className={styles.nfContainerAddMenuBg}>
+                    <div className={styles.nfContainerAddMenu}>
+                        <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
+                        <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
+                        <div className={styles.nfContainerAddMenuInput}>
+                            <TextField key={'タイトル'} value={''}/>
+                        </div>
+                        <Button onClick={() => setShowEditMenu(false)}>Close</Button>
+                    </div>
+                </div> : ''
+            }
         </div>
     )
 }

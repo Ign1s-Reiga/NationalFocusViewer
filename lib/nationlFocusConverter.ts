@@ -26,20 +26,32 @@ type translatePare = {
     value: string
 }
 export const searchFilters = {
-    POLITICAL: 'FOCUS_FILTER_POLITICAL',
-    RESEARCH: 'FOCUS_FILTER_RESEARCH',
-    INDUSTRY: 'FOCUS_FILTER_INDUSTRY',
-    STABILITY: 'FOCUS_FILTER_STABILITY',
-    WAR_SUPPORT: 'FOCUS_FILTER_WAR_SUPPORT',
-    MANPOWER: 'FOCUS_FILTER_MANPOWER',
-    ANNEXATION: 'FOCUS_FILTER_ANNEXATION',
-    SOV_POLITICAL_PARANOIA: 'FOCUS_FILTER_SOV_POLITICAL_PARANOIA',
-    PROPAGANDA: 'FOCUS_FILTER_PROPAGANDA',
-    SPA_CIVIL_WAR: 'FOCUS_SPA_FILTER_CIVIL_WAR',
-    SPA_CARLIST_UPRISING: 'FOCUS_FILTER_SPA_CARLIST_UPRISING',
-    ARMY_XP: 'FOCUS_FILTER_ARMY_XP',
-    NAVY_XP: 'FOCUS_FILTER_NAVY_XP',
-    AIR_XP: 'FOCUS_FILTER_AIR_XP'
+    POLITICAL: { key: 'FOCUS_FILTER_POLITICAL', value: '政治' },
+    RESEARCH: { key: 'FOCUS_FILTER_RESEARCH', value: '研究' },
+    INDUSTRY: { key: 'FOCUS_FILTER_INDUSTRY', value: '産業' },
+    STABILITY: { key: 'FOCUS_FILTER_STABILITY', value: '安定度' },
+    WAR_SUPPORT: { key: 'FOCUS_FILTER_WAR_SUPPORT', value: '戦争協力度' },
+    FRA_POLITICAL_VIOLENCE: { key: 'FOCUS_FILTER_FRA_POLITICAL_VIOLENCE', value: '政治的暴力' },
+    FRA_OCCUPATION_COST: { key: 'FOCUS_FILTER_FRA_OCCUPATION_COST', value: '占領コスト' },
+    ANNEXATION: { key: 'FOCUS_FILTER_ANNEXATION', value: '併合' },
+    MANPOWER: { key: 'FOCUS_FILTER_POLITICAL', value: '政治' },
+    CHI_INFLATION: { key: 'FOCUS_FILTER_CHI_INFLATION', value: 'インフレーション' },
+    USA_CONGRESS: { key: 'FOCUS_FILTER_USA_CONGRESS', value: '議会' },
+    TFV_AUTONOMY: { key: 'FOCUS_FILTER_TFV_AUTONOMY', value: '自治度' },
+    MEX_CHURCH_AUTHORITY: { key: 'FOCUS_FILTER_MEX_CHURCH_AUTHORITY', value: '教会の権威' },
+    MEX_CAUDILLO_REBELLION: { key: 'FOCUS_FILTER_MEX_CAUDILLO_REBELLION', value: 'カウディーリョの反乱' },
+    SPA_CIVIL_WAR: { key: 'FOCUS_FILTER_SPA_CIVILWAR', value: 'スペイン内戦' },
+    SPA_CARLIST_UPRISING: { key: 'FOCUS_FILTER_CARLIST', value: 'カルリスタ蜂起' },
+    INTERNAL_AFFAIRS: { key: 'FOCUS_FILTER_INTERNAL_AFFAIRS', value: '国内問題' },
+    GRE_DEBT_TO_IFC: { key: 'FOCUS_FILTER_GRE_DEBT_TO_IFC', value: 'I.F.C.への債務' },
+    TUR_KURDISTAN: { key: 'FOCUS_FILTER_TUR_KURDISTAN', value: 'クルディスタン' },
+    TUR_KEMALISM: { key: 'FOCUS_FILTER_TUR_KEMALISM', value: 'ケマル主義' },
+    TUR_TRADITIONALISM: { key: 'FOCUS_FILTER_TUR_TRADITIONALISM', value: '伝統主義' },
+    SOV_POLITICAL_PARANOIA: { key: 'FOCUS_FILTER_SOV_POLITICAL_PARANOIA', value: '政治的パラノイア' },
+    PROPAGANDA: { key: 'FOCUS_FILTER_PROPAGANDA', value: 'プロパガンダ' },
+    ARMY_XP: { key: 'FOCUS_FILTER_POLITICAL', value: '陸軍経験値' },
+    NAVY_XP: { key: 'FOCUS_FILTER_POLITICAL', value: '海軍経験値' },
+    AIR_XP: { key: 'FOCUS_FILTER_POLITICAL', value: '空軍経験値' }
 }
 export class NFConverter {
     client: MongoClient
@@ -53,6 +65,7 @@ export class NFConverter {
     convert() {
 
     }
+    export() {}
 }
 function assertIsString(a: any): asserts a is string {
     if (typeof a !== 'string')
