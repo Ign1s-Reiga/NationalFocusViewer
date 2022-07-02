@@ -39,9 +39,6 @@
     max-height: 720px;
     padding: 1rem 2rem
 }
-.nfContainerAddMenuTextField {
-    display: flex;
-}
 .nfContainerAddMenuInput {
     margin-bottom: 1.5rem;
 }

@@ -3,6 +3,7 @@ import { INationalFocus } from '../lib/nationlFocusConverter';
 import React from 'react';
 import { Button, Divider, Input, Menu, MenuItem, Typography } from '@mui/material';
 import NationalFocus from './NationalFocus';
+import TextField from './TextField';
 
 const nfs: INationalFocus[] = [
     {
@@ -99,7 +100,7 @@ const NFContainer = (props: {selectedItem: string}) => {
                         <Typography variant={'h4'} style={{textAlign: 'center', color: 'whitesmoke'}}>NFの追加</Typography>
                         <Divider sx={{bgcolor: 'slategray', margin: '1.3rem 0'}} flexItem/>
                         <div className={styles.nfContainerAddMenuInput}>
-                            <TextField key={'タイトル'} value={''}/>
+                            <TextField key={'タイトル'}/>
                         </div>
                         <Button onClick={() => setShowAddMenu(false)}>Close</Button>
                     </div>
@@ -107,14 +108,6 @@ const NFContainer = (props: {selectedItem: string}) => {
             }
         </div>
     )
-};
-export const TextField = (props: {key: string, value: string}) => {
-    return (
-        <div className={styles.nfContainerAddMenuTextField}>
-            <Typography variant={'body1'} style={{ color: 'white' }}>{props.key}</Typography>
-            <Input style={{ borderBottomColor: 'rgba(255,255,255,0.42)' }}></Input>
-        </div>
-    );
 };
 
 export default NFContainer

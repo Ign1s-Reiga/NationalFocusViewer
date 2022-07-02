@@ -2,7 +2,7 @@ import { INationalFocus } from '../lib/nationlFocusConverter';
 import styles from '../styles/NationalFocus.module.css';
 import React from 'react';
 import { Button, Divider, Menu, MenuItem, Typography } from '@mui/material';
-import { TextField } from './NFContainer';
+import TextField from './TextField';
 
 const NationalFocus = (props: {nfData: INationalFocus}) => {
     const [contextMenu, setContextMenu] = React.useState<{
@@ -62,6 +62,9 @@ const NationalFocus = (props: {nfData: INationalFocus}) => {
                 </Menu>
             </div>
             <div className={styles.nationalFocusEditMenu} style={showEditMenu ? {left: `calc(100% - 400px)`, transition: 'left 0.2s ease-out'} : {left: '100%', transition: 'left 0.2s ease-out'}}>
+                <Typography variant={'h4'} style={{ color: 'white', textAlign: 'center' }}>編集</Typography>
+                <Divider flexItem sx={{bgcolor: 'slategray', margin: '1.3rem 1.8rem'}}/>
+                <TextField key={'タイトル'}/>
                 <Button onClick={() => setShowEditMenu(false)}>閉じる</Button>
             </div>
         </>
